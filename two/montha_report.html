@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Monthly Report</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monthly Report</h1>
+    <table>
+        <tr>
+            <th>Venue</th>
+            <th>Show Name</th>
+            <th>Show Time</th>
+            <th>Show Rating</th>
+            <th>Ticket Price</th>
+            <th>Total Bookings</th>
+        </tr>
+        {% for show in shows %}
+        <tr>
+            <td>{{ show.venue }}</td>
+            <td>{{ show.show_name }}</td>
+            <td>{{ show.show_time }}</td>
+            <td>{{ show.show_rating }}</td>
+            <td>{{ show.show_ticketprice }}</td>
+            <td>{{ show.total_booking }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

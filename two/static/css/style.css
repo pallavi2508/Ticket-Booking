@@ -1,0 +1,39 @@
+body {
+  background-color: darkgray;
+  
+}
+
+#app {
+  background-color: darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: auto;
+  height: auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+

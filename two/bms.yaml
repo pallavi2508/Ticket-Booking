@@ -1,0 +1,329 @@
+swagger: '2.0'
+info:
+  title: Flask RESTful API
+  description: API for venue and show management
+  version: '1.0'
+schemes:
+  - http
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /admin_register:
+    post:
+      summary: Register admin user
+      responses:
+        '200':
+          description: Registered successfully
+  /user_register:
+    post:
+      summary: Register user
+      responses:
+        '200':
+          description: Registered successfully
+  /user_details/{email}:
+    get:
+      summary: Get user details by email
+      parameters:
+        - in: path
+          name: email
+          required: true
+          type: string
+      responses:
+        '200':
+          description: User details retrieved successfully
+        '404':
+          description: User not found
+  /admin_page/{email}:
+    get:
+      summary: Get admin user details by email
+      parameters:
+        - in: path
+          name: email
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Admin user details retrieved successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: User not found
+  /user_page/{email}:
+    get:
+      summary: Get user details by email
+      parameters:
+        - in: path
+          name: email
+          required: true
+          type: string
+      responses:
+        '200':
+          description: User details retrieved successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: User not found
+  /venue/{id}:
+    get:
+      summary: Get venue details by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Venue details retrieved successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Venue not found
+  /venue:
+    post:
+      summary: Add a new venue
+      responses:
+        '200':
+          description: Venue added successfully
+        '403':
+          description: Not allowed
+  /venuedelete/{vid}:
+    delete:
+      summary: Delete a venue by ID
+      parameters:
+        - in: path
+          name: vid
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Venue and associated shows deleted successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Venue not found
+  /show:
+    get:
+      summary: Get shows by venue ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Shows retrieved successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Not found
+    post:
+      summary: Add a new show
+      responses:
+        '200':
+          description: Show added successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Data not given
+  /showdelete/{show_id}:
+    delete:
+      summary: Delete a show by ID
+      parameters:
+        - in: path
+          name: show_id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Show deleted successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Show not found
+  /user_page/{email}/venue:
+    get:
+      summary: Get venues for user by email
+      parameters:
+        - in: path
+          name: email
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Venues retrieved successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Venue not found
+  /user_page/{email}/venue/{id}:
+    get:
+      summary: Get shows for user by email and venue ID
+      parameters:
+        - in: path
+          name: email
+          required: true
+          type: string
+        - in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Shows retrieved successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Show not found
+  /singleshow/{show_id}:
+    get:
+      summary: Get single show details by ID
+      parameters:
+        - in: path
+          name: show_id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Show details retrieved successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Show not found
+    put:
+      summary: Update single show details by ID
+      parameters:
+        - in: path
+          name: show_id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Show updated successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: User id not given
+  /singlevenue/{venue_id}:
+    get:
+      summary: Get single venue details by ID
+      parameters:
+        - in: path
+          name: venue_id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Venue details retrieved successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Venue not found
+  /booking/{id}:
+    get:
+      summary: Get booking details by user ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Booking details retrieved successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Not Found
+    post:
+      summary: Book a show
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Booked Successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: User or Show not found
+  /user_account/{id}:
+    get:
+      summary: Get user account details by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: User account details retrieved successfully
+        '403':
+          description: Not allowed
+        '404':
+          description: Show not Book yet!
+  /rating/{show_id}/{user_id}:
+    get:
+      summary: Get user's rating for a show
+      parameters:
+        - in: path
+          name: show_id
+          required: true
+          type: integer
+        - in: path
+          name: user_id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: User's rating retrieved successfully
+    post:
+      summary: Add or update user's rating for a show
+      parameters:
+        - in: path
+          name: show_id
+          required: true
+          type: integer
+        - in: path
+          name: user_id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Rating added successfully
+        '400':
+          description: Invalid rating
+        '403':
+          description: Not allowed
+        '404':
+          description: Booking not found
+    delete:
+      summary: Delete user's rating for a show
+      parameters:
+        - in: path
+          name: show_id
+          required: true
+          type: integer
+        - in: path
+          name: user_id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Rating deleted successfully
+        '404':
+          description: Rating not found
+  /search:
+    get:
+      summary: Search venues and shows
+      parameters:
+        - in: query
+          name: q
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Search results retrieved successfully

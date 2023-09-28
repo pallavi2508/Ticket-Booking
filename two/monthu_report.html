@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Report</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Bookings Report</h1>
+    <table>
+        <tr>
+            <th>Show Name</th>
+            <th>Show Date & Time</th>
+            <th>Tickets</th>
+        </tr>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.show_name }}</td>
+            <td>{{ booking.show_time }}</td>
+            <td>{{ booking.booking_tickets }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
